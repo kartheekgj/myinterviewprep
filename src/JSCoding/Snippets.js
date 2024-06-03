@@ -45,11 +45,8 @@ function deepClone(value) {
 }
 /*
 ClosureSum(10,5)
-ClosureSum(10,5.8,9,15,69,12)
 ClosureSum(10)(5)
-ClosureSum(2)(3,7,9,12,17)
 */
-
 function ClosureSum() {
   var total = 0;
   var args1 = Array.prototype.slice.call(arguments);
@@ -65,8 +62,16 @@ function ClosureSum() {
   };
   return total;
 }
+//remove duplicates
+const nums = [1, 2, 3, 4, 1, 1, 2, 4];
+const filteredArray = nums.filter((val, index) => nums.indexOf(val) === index);
+//for count <=2
+const filteredArray = nums.filter((val, index,arr) => {
+  const count = arr.filter(item => item === val).length;
+  return count <= 2;
+});
 
-console.log(ClosureSum(10)(2, 3, 4, 5));
+
 // Reverse a String
 function reverseString(str) {
     return str.split('').reverse().join('');
